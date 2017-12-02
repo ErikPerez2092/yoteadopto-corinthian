@@ -24,6 +24,19 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.yta-KOC_logo:before {
+  content: "\e906";
+}
+.yta-JT_logo:before {
+  content: "\e907";
+  color: #432245;
+}
+.yta-qu_01:before {
+  content: "\e908";
+}
+.yta-qu_02:before {
+  content: "\e909";
+}
 .yta-paw_plus:before {
   content: "\e905";
 }
@@ -45,4 +58,13 @@
 .yta-yta_icon-white:before {
   content: "\e902";
   color: #fff;
+}
+.yta-facebook2:before {
+  content: "\ea91";
+}
+.yta-instagram:before {
+  content: "\ea92";
+}
+.yta-twitter:before {
+  content: "\ea96";
 }
