@@ -42,7 +42,8 @@
     font-style: normal;
   }
 
-  * {
+  *,
+  a {
     font-family: nunito;
   }
 
@@ -73,13 +74,9 @@
     z-index: 1;
   }
 
-  header ul,
-  header h2 {
-    display: none;
-  }
-
   header nav i:first-child {
     font-size: 20px;
+    cursor: pointer;
   }
 
   header nav i:last-child {
@@ -355,7 +352,8 @@
     text-decoration: none;
   }
 
-  .footer-socialnetworks, .footer-sponsors {
+  .footer-socialnetworks,
+  .footer-sponsors {
     margin-bottom: 16px;
   }
 
@@ -381,37 +379,67 @@
     display: inline-block;
   }
 
+  .menu-list {
+    position: fixed;
+    background-color: #553457;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    overflow: hidden;
+    text-align: center;
+    transition: bottom ease .5s, padding-top ease-in .3s;
+  }
+
+  .menu-list.opened {
+    bottom: 0;
+    padding-top: 66px;
+    height: 100vh;
+  }
+
+  .menu-list li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 30px;
+    text-transform: uppercase;
+  }
+
+  header nav i {
+    position: relative;
+    z-index: 2;
+  }
 </style>
 
 <body>
   <header>
     <nav>
-      <i class="yta yta-menu_icon"></i>
-      <h2>Menú de Navegación</h2>
-      <ul>
+      <i id="menuIcon" class="yta yta-menu_icon"></i>
+      <h2 class="only-read">Menú de Navegación</h2>
+      <ul class="menu-list" id="menuList">
         <li>
-          <a href="#">Home</a>
+          <a href="#home">Home</a>
         </li>
         <li>
-          <a href="#">
+          <a href="#aboutUs">
             <span class="only-read">¿Que es Yo Te Adopto?</span>Acerca</a>
         </li>
         <li>
-          <a href="#">
+          <a href="#adopt">
             <span class="only-read">Animales en Adopción</span>Adoptar</a>
         </li>
         <li>
-          <a href="#">Campañas</a>
+            <a href="#testimony">Testimonio</a>
         </li>
         <li>
-          <a href="#">Testimonio</a>
+          <a href="#camp">Campañas</a>
         </li>
       </ul>
       <i class="yta yta-yta_icon-white"></i>
     </nav>
   </header>
   <main>
-    <section class="home">
+    <section class="home" id="home">
       <svg aria-labelledby="home-title home-desc">
         <title id="home-title">Yo te adopto</title>
         <desc id="home-desc">Hogares para nuestros amigos</desc>
@@ -420,7 +448,7 @@
       <i class="home-down yta yta-slide_icon-up-down"></i>
     </section>
 
-    <section class="aboutUs">
+    <section class="aboutUs" id="aboutUs">
       <div class="aboutUs-containerImg">
         <picture class="aboutUs-img">
           <img src="./img/aboutus-img_2x.png" srcset="./img/aboutus-img_1x.png,
@@ -439,7 +467,7 @@
       </p>
     </section>
 
-    <section>
+    <section id="adopt">
       <div class="adopt-title">
         <i class="yta yta-yta_icon-white"></i>
         <h2>Busco un lugar, ¿Me adoptas?</h2>
@@ -488,7 +516,7 @@
       </div>
     </section>
 
-    <section class="testimony">
+    <section class="testimony" id="testimony">
       <h2 class="only-read">Testimonios</h2>
       <blockquote>
         <div class="testimony-quote">
@@ -501,7 +529,7 @@
       </blockquote>
     </section>
 
-    <section class="camp">
+    <section class="camp" id="camp">
       <div class="class camp-title">
         <i class="yta yta-paw_plus"></i>
         <h2>Campañas de Vacunación</h2>
@@ -529,21 +557,75 @@
       <nav class="footer-socialnetworks">
         <h2 class="only-read">Redes sociales</h2>
         <ul>
-          <li><a href="#"><i class="yta yta-facebook"><span class="only-read">Facebook</span></i></a></li>
-          <li><a href="#"><i class="yta yta-twitter"><span class="only-read">Twitter</span></i></a></li>
-          <li><a href="#"><i class="yta yta-instagram"><span class="only-read">Instagram</span></i></a></li>
+          <li>
+            <a href="#">
+              <i class="yta yta-facebook">
+                <span class="only-read">Facebook</span>
+              </i>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="yta yta-twitter">
+                <span class="only-read">Twitter</span>
+              </i>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="yta yta-instagram">
+                <span class="only-read">Instagram</span>
+              </i>
+            </a>
+          </li>
         </ul>
       </nav>
       <nav class="footer-sponsors">
         <h2 class="only-read">Patrocinadores</h2>
         <ul>
-          <li><a href="#"><i class="yta yta-KOC_logo"><span class="only-read">Johnny Terror</span></i></a></li>
-          <li><a href="#"><i class="yta yta-JT_logo"><span class="only-read">The Knights Of Code</span></i></a></li>
+          <li>
+            <a href="#">
+              <i class="yta yta-KOC_logo">
+                <span class="only-read">Johnny Terror</span>
+              </i>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="yta yta-JT_logo">
+                <span class="only-read">The Knights Of Code</span>
+              </i>
+            </a>
+          </li>
         </ul>
       </nav>
       <b class="footer-copy">Yo Te Adopto &copy; 2017</b>
     </footer>
   </main>
+
+  <script>
+    var menuList = document.getElementById('menuList');
+    var menuIcon = document.getElementById('menuIcon');
+
+    menuIcon.addEventListener('click',function(){
+      menuList.classList.toggle('opened');
+
+      if(menuList.classList.contains('opened'))
+      {
+        document.body.style.overflow = 'hidden';
+        menuIcon.className = 'yta-yta_icon-white';
+      }
+      else
+      {
+        document.body.style.overflow = 'auto';
+        menuIcon.className = 'yta-yta_menuicon';
+      }
+        });
+
+    window.onhashchange = function (){
+      menuIcon.click();
+    }
+  </script>
 </body>
 
 </html>
